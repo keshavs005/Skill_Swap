@@ -1,0 +1,41 @@
+@model IReadOnlyList<SkillSwap.Web.Models.SkillCard>
+@{ ViewData["Title"] = "Explore skills"; }
+
+<section class="page-heading">
+	<p class="eyebrow">LEARN FROM EACH OTHER</p>
+	<h1>Explore skills</h1>
+	<p>Find a peer who can help you grow, using SkillCredits instead of money.</p>
+</section>
+
+<form method="get" class="row g-2 mb-4">
+	<div class="col-md-9">
+		<input name="search" value="@(Context.Request.Query["search"] )" class="form-control form-control-lg" placeholder="Search Python, design, guitar..." />
+	</div>
+	<div class="col-md-3">
+		<button class="btn btn-primary btn-lg w-100" type="submit">Search</button>
+	</div>
+</form>
+
+@if (Model.Count == 0)
+{
+	<div class="alert alert-info">No skills matched your search. Try another term.</div>
+}
+else
+{
+	<div class="row g-4">
+		@foreach (var skill in Model)
+		{
+			<div class="col-md-6 col-lg-4">
+				<article class="card skill-card h-100">
+					<div class="card-body">
+						<span class="badge text-bg-light mb-3">@skill.CategoryName</span>
+						<h2 class="h5">@skill.Title</h2>
+						<p class="text-muted">@skill.Description</p>
+						<p class="small mb-3">Taught by <strong>@skill.TeacherName</strong></p>
+						<a asp-action="Details" asp-route-id="@skill.Id" class="btn btn-outline-primary">View skill</a>
+					</div>
+				</article>
+			</div>
+		}
+	</div>
+}

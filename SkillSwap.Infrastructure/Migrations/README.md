@@ -1,0 +1,1 @@
+Run `dotnet ef migrations add InitialCreate --project SkillSwap.Infrastructure --startup-project SkillSwap.API` and then `dotnet ef database update` from the solution directory. The API never deletes or resets an existing database.

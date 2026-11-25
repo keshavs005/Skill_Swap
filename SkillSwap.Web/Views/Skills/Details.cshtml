@@ -1,0 +1,3 @@
+@model SkillSwap.Web.Models.SkillDetailsViewModel
+@{ ViewData["Title"] = Model.Title; }
+<div class="row justify-content-center"><div class="col-lg-8"><span class="badge text-bg-light mb-3">@Model.CategoryName</span><h1>@Model.Title</h1><p class="lead">@Model.Description</p><div class="card p-4 mt-4"><h2 class="h5">Learn with @Model.TeacherName</h2><p class="text-muted">Sessions are one hour and cost one SkillCredit. Choose a future time from your dashboard to request a booking.</p><a asp-controller="Skills" asp-action="Index" class="btn btn-primary">Back to explore</a></div></div></div>
